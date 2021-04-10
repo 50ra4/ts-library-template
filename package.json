@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:clear": "rimraf dist",
+    "build:esm": "tsc -p ./tsconfig.build-esm.json",
+    "build:lib": "tsc -p ./tsconfig.build.json",
+    "build": "npm run build:clear && npm run build:esm && npm run build:lib",
     "check-type": "tsc --noEmit",
     "test": "jest -c ./jest.config.js"
   },

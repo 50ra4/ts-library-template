@@ -6,6 +6,15 @@
   "scripts": {
     "test": "jest -c ./jest.config.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{js,json}": "prettier --write"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/50ra4/ts-library-template.git"

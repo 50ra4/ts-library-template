@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "check-type": "tsc --noEmit",
     "test": "jest -c ./jest.config.js"
   },
   "husky": {

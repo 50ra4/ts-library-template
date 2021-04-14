@@ -9,7 +9,8 @@
     "build:lib": "tsc -p ./tsconfig.build.json",
     "build": "npm run build:clear && npm run build:esm && npm run build:lib",
     "check-type": "tsc --noEmit",
-    "test": "jest -c ./jest.config.js"
+    "test": "jest -c ./jest.config.js",
+    "example-scripts": "ts-node --project tsconfig.scripts.json scripts/example.ts"
   },
   "husky": {
     "hooks": {

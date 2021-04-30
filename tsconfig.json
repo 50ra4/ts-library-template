@@ -8,8 +8,9 @@
     "moduleResolution": "Node",
     "sourceMap": false,
     "declaration": true,
-    "strict": true
+    "strict": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": ["./src", "./test", "./scripts"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

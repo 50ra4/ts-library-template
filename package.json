@@ -10,7 +10,7 @@
     "esm"
   ],
   "scripts": {
-    "build:clear": "rimraf dist",
+    "build:clear": "rimraf lib && rimraf esm",
     "build:esm": "tsc -p ./tsconfig.build-esm.json",
     "build:lib": "tsc -p ./tsconfig.build.json",
     "build": "npm run build:clear && npm run build:esm && npm run build:lib",

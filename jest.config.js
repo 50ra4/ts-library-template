@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: "node",
   moduleFileExtensions: ["ts", "js"],
   transform: {
-    "^.+\\.(ts)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": "babel-jest",
   },
   globals: {
     "ts-jest": {
@@ -11,4 +11,6 @@ module.exports = {
     },
   },
   testMatch: ["**/**.test.ts"],
+  // FIXME:
+  transformIgnorePatterns: ["/node_modules/(?!(@50ra4)/)"],
 };

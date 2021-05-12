@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: check-version
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches:
+      - 'release/v**'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "Test"
+  check_version:
+    name: Check Package Version
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/v')
+
+    # node version
+    strategy:
+      matrix:
+        node-version: ["14.16"]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Setup node
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Check Package version
+      - name: Check Package version
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          RELEASE_BRANCH_VERSION=$(echo "$HEAD_REF" | awk -F "/" '{ print $2 }')
+          node scripts/check-package-version.js $RELEASE_BRANCH_VERSION
